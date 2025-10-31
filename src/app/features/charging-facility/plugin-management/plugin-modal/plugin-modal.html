@@ -1,0 +1,68 @@
+<p-dialog
+  [header]="'Connect EV to ' + (selectedCharger()?.name || 'Charger')"
+  [closable]="true"
+  [modal]="true"
+  [(visible)]="visible"
+  [style]="{ width: '30rem' }"
+  (onHide)="close()">
+
+  <div class="modal-content">
+    @if (availableEvs().length > 0) {
+      @if (selectedCharger(); as charger) {
+        <div class="charger-info">
+          <p><strong>Charger:</strong> {{ charger.name }} (ID: {{ charger.id }})</p>
+        </div>
+      }
+
+      <div class="ev-selection">
+        <label for="ev-select">Select an available EV:</label>
+        <p-select
+          id="ev-select"
+          [options]="availableEvs()"
+          [ngModel]="selectedEv()"
+          (ngModelChange)="onEvSelectionChange($event)"
+          optionLabel="name"
+          placeholder="Choose an EV to connect"
+          [style]="{ width: '100%' }"
+        >
+          <ng-template #selectedItem let-ev>
+            {{ ev.name }} (ID: {{ ev.id }})
+          </ng-template>
+          <ng-template #item let-ev>
+            <div class="ev-option">
+              <div class="ev-name">{{ ev.name }}</div>
+              <div class="ev-details">ID: {{ ev.id }} | Battery: {{ ev.batteryCapacity }}kWh</div>
+            </div>
+          </ng-template>
+        </p-select>
+      </div>
+    } @else {
+      <div class="no-evs">
+        <p>No EVs available for connection.</p>
+        <p class="help-text">All EVs are currently connected to other chargers.</p>
+
+        <div class="modal-actions">
+          <p-button
+            label="Close"
+            severity="secondary"
+            (onClick)="close()"
+          />
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="modal-actions">
+    <p-button
+      label="Cancel"
+      severity="secondary"
+      (onClick)="close()"
+    />
+    <p-button
+      label="Connect"
+      severity="success"
+      [disabled]="!canConnect()"
+      (onClick)="connectEv()"
+    />
+  </div>
+</p-dialog>

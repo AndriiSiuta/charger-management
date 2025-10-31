@@ -1,0 +1,79 @@
+.plugin-management-container {
+  padding: 1rem;
+
+  .header-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+
+    h3 {
+      margin: 0;
+      color: var(--text-color);
+      font-weight: 600;
+    }
+  }
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  gap: 1rem;
+
+  p {
+    margin: 0;
+    color: var(--text-color-secondary);
+    font-size: 0.9rem;
+  }
+}
+
+/* Table styling */
+::ng-deep {
+  .p-table {
+    .p-table-header-cell {
+      background-color: var(--surface-section);
+      font-weight: 600;
+      border-bottom: 1px solid var(--surface-border);
+    }
+
+    .p-table-row {
+      &:hover {
+        background-color: var(--surface-hover);
+      }
+    }
+
+    .p-table-cell {
+      padding: 0.75rem;
+      border-bottom: 1px solid var(--surface-border);
+
+      &:last-child {
+        text-align: center;
+      }
+    }
+  }
+
+  .p-toast {
+    .p-toast-message {
+      margin: 0 0 1rem 0;
+    }
+  }
+
+  .p-message {
+    margin-bottom: 1rem;
+
+    &.p-message-error {
+      background-color: var(--red-50);
+      border-color: var(--red-200);
+      color: var(--red-800);
+    }
+
+    &.p-message-info {
+      background-color: var(--blue-50);
+      border-color: var(--blue-200);
+      color: var(--blue-800);
+    }
+  }
+}

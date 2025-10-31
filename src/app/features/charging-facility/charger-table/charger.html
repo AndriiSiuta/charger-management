@@ -1,0 +1,23 @@
+
+@if (chargers(); as chargers) {
+  <p-table [value]="chargers">
+    <ng-template #header>
+      <tr>
+        @for (col of tableColumns; track col) {
+          <th>{{ col }}</th>
+        }
+      </tr>
+    </ng-template>
+
+    <ng-template #body let-charger>
+      <tr>
+        <td>{{ charger.id }}</td>
+        <td>{{ charger.name }}</td>
+        <td>{{ charger.maxChargerRate }}kW</td>
+      </tr>
+    </ng-template>
+  </p-table>
+} @else {
+  <p-progress-spinner ariaLabel="loading" />
+}
+

@@ -1,0 +1,22 @@
+/* Tab icons styling */
+p-tab {
+  i {
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+  }
+  
+  span {
+    vertical-align: middle;
+  }
+}
+
+/* Make tabs more visually appealing */
+.p-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  
+  i {
+    font-size: 1.1rem;
+  }
+}

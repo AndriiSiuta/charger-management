@@ -1,0 +1,23 @@
+
+@if (evs(); as evs) {
+  <p-table [value]="evs">
+    <ng-template #header>
+      <tr>
+        @for (col of tableColumns; track col) {
+          <th>{{ col }}</th>
+        }
+      </tr>
+    </ng-template>
+
+    <ng-template #body let-ev>
+      <tr>
+        <td>{{ ev.id }}</td>
+        <td>{{ ev.name }}</td>
+        <td>{{ ev.batteryCapacity }}kW</td>
+      </tr>
+    </ng-template>
+  </p-table>
+} @else {
+  <p-progress-spinner ariaLabel="loading" />
+}
+
